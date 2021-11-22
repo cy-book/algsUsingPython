@@ -2,7 +2,7 @@ class Solution:
     def numSquares(self, n: int) -> int:
         while n % 4 == 0:
             n //= 4
-        if n % 8 == 8:
+        if n % 8 == 7:
             return 4
         for i in range(n + 1):
             temp = i * i

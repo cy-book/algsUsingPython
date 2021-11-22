@@ -1,5 +1,6 @@
 # description:
 #   完全平方数： 给定一个数 n ， 求出最少几个完全平方的和为n.
+#   动态规划  f[n] = f[n - i*i] + 1
 
 
 def isPerfectSquart(n):
