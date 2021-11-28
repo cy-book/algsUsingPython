@@ -6,21 +6,27 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: list[int], nums2: list[int]) -> float:
         l1, l2 = len(nums1), len(nums2)
-        i1, i2 = 0, 0
-        cnt = (l1 + l2)//2 + 1
+        i1, i2 = 0, 0       # i1, i2 指向的应是nums1 和nums2 的第一个有效位置
+        cnt = (l1 + l2)//2  # cnt 是要找到的第两数组合并后的第cnt个位置的数
         right, left = 0, 0
         while cnt > 0 and i1 < l1 and i2 < l2:
             left = right
-            n = min(cnt//2, l1 - i1, l2 - i2)
-            if nums1[i1 + n - 1] <= nums2[i2 + n - 1]:
-                right = nums1[i1 + n - 1]
-            cnt -= n
-        if i1 >= l1:
-            right = nums2[i2+n]
-            left = nums2[i2 + n-1]
-        elif i2 <= l2:
-            right = nums1[i1 + n]
-            left = nums1[i1 + n - 1]
+            n = min((cnt)//2, l1 - i1 - 1, l2 - i2 - 1)  # 这一轮要排除前n个最小的数
+            if nums1[i1 + n] <= nums2[i2 + n]:
+                right = nums1[i1 + n]
+                i1 += n + 1
+            else:
+                right = nums2[i2 + n]
+                i2 += n + 1
+            cnt -= n        # 排除了n个数
+        # 还需要排除cnt个数
+        if i2 < l2:
+            right = nums2[i2+cnt]
+            left = nums2[i2 + cnt-1]
+        elif i1 < l1:
+            right = nums1[i1 + cnt]
+            left = nums1[i1 + cnt - 1]
+        print('left: ', left, ' right: ', right)
         if (l1 + l2) & 1 == 1:
             return right
         else:
