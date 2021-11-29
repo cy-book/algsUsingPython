@@ -10,6 +10,8 @@ nums2[j - 1] <= nums1[i]
 median1 = max(nums1[i - 1], nums2[j - 1])
 median2 = min(nums1[i], nums2[j])
 采用 二分的方式移动索引 i 
+
+参考 : https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xun-zhao-liang-ge-you-xu-shu-zu-de-zhong-wei-s-114/
 """
 
 
