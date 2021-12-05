@@ -16,6 +16,7 @@ def reverse(x: int) -> int:
     INT_MAX, INT_MIN = 2 ** 31 - 1, -2 ** 31  # 设定溢出界限
     rev = 0  # 翻转后的数
     while x != 0:
+        # INT_MIN 是一个负数， 向零取整应该 + 1
         if rev < INT_MIN // 10 + 1 or rev > INT_MAX // 10:      # 溢出判断
             return 0
         digit = x % 10
