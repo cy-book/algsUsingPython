@@ -6,6 +6,9 @@
 所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
 '''
 
+# date: 2021-12-07
+# author: cy-book
+
 
 def isMatch(s: str, p: str) -> bool:
     i1, i2 = 0, 0
@@ -35,13 +38,21 @@ def isMatch(s: str, p: str) -> bool:
             continue
         else:
             return False
-    if i1 >= n1 and i2 >= n2:
+    if i1 < n1:
+        return False
+    elif i2 >= n2:
         return True
-    return False
+    else:  # 当剩下的 pattern 串可以匹配空字符串是，依然匹配成功
+        while i2 < n2:
+            if i2 + 1 < n2 and p[i2 + 1] == '*':
+                i2 += 2
+            else:
+                return False
+        return True
 
 
-s = 'aaa'
-p = 'ab*a*c*a'
+s = 'a'
+p = 'ab*'
 isMatch(s, p)
 
 
