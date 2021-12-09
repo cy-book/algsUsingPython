@@ -13,3 +13,11 @@ def intToRoman(self, num: int) -> str:
         HUNDREDS[num % 1000 // 100] + \
         TENS[num % 100 // 10] + \
         ONES[num % 10]
+
+
+if __name__ == '__main__':
+    nums = [3, 4, 9, 58, 1994]
+    ans = ["III", "IV", "IX", "LVIII", "MCMXCIV"]
+    for i in range(len(nums)):
+        results = intToRoman(nums[i])
+        print(nums[i], results, ans[i])
