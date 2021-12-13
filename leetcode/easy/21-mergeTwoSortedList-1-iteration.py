@@ -1,6 +1,10 @@
 '''
 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 '''
+# date: 2021-12-13
+# author: cy-book
+
+
 # Definition for singly-linked list.
 
 from typing import Optional
@@ -13,12 +17,14 @@ class ListNode:
 
 
 def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    '''  
     if not list1 and not list2:
         return None
     elif not list1:
         return list2
     elif not list2:
         return list1
+    '''
     head = ListNode()
     cur = head
     while list1 and list2:
@@ -29,6 +35,8 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
             cur.next = list2
             list2 = list2.next
         cur = cur.next
+    cur.next = list1 if list1 else list2
+    '''
     while list1:
         cur.next = list1
         cur = cur.next
@@ -37,4 +45,5 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
         cur.next = list2
         cur = cur.next
         list2 = list2.next
+    '''
     return head.next
